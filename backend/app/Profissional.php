@@ -11,6 +11,6 @@ class Profissional extends Model
 
     public function tecnologias(){
         return $this->hasMany('App\tecnologias',  'profissionais_has_tecnologias', 
-        'tecnologia_id', 'profissional_id');
+        'profissional_id', 'tecnologia_id');
     }
 }
