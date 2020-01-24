@@ -15,11 +15,24 @@ class ProfissionalController extends Controller
         }
 
     public function criarProfissional(Request $request){
-        $newProfissional = new Professional();
+        $tecnologiaId = $request->tecnologia;
+        $newProfissional = new Profissional();
         $newProfissional->nome = $request->nome;
         $newProfissional->github = $request->github;
-
+        
         $result = $newProfissional->save();
+        
+        $tecnologia = Tecnologia::find($tecnologiaId);
+
+        if($tecnologia){
+            $tecnologia->profissionais()->attach($newProfissional->id); //função do laravel para agregar a informação de outra tabela
+        }else{
+            return response()->json(["error"=>"O id da tecnologia nao existe!"]);
+        }
+     /*    
+        DB::table('profissionais_has_tecnologias')->insert([
+        ['tecnologia_id'=>$request, 'profissional_id'=>$request]
+        ]); */
         
         return response()->json($newProfissional);
     }

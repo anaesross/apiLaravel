@@ -18,4 +18,4 @@ use Illuminate\Http\Request;
 });  ROTA PADRÃO DO LARAVEL*/
 
 Route::get('/profissionais', 'ProfissionalController@listarProfissionais');
-Route::get('/profissionais', 'ProfissionalController@criarProfissional');
+Route::post('/profissionais', 'ProfissionalController@criarProfissional');
