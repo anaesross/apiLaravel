@@ -17,6 +17,9 @@
                     <label>gitHub:</label>
                     <input  type="text" name="github" id="github"/>
             
+                    <label>Tecnologia:</label>
+                    <input  type="text" name="tecnologia" id="tecnologia"/>
+            
                     <button class="btn btn-primary" type="submit">Enviar</button>
                 
             </form>
@@ -31,18 +34,24 @@
         event.preventDefault(); //não deixa que dps que clicar no submit ele redirecione a página(atualiza)
         let nomeProfissional = document.getElementById('nome').value;
         let githubProfissional = document.getElementById('github').value; //pega os dados que recebe no input
+        let tecProfissional = document.getElementById('tecnologia').value;
 
         let config =   { 
+            headers:{
+                "Content-Type":"application/json"
+            },
             method :"POST",
-            body:JSON.stringify({nome:nomeProfissional, github:githubProfissional}) 
+            body:JSON.stringify({nome:nomeProfissional, github:githubProfissional,tecnologia:tecProfissional}) 
             //passando um valor(nomeProfissional) para o atributo(nome).
         }
         fetch('http://localhost:8000/api/profissionais', config)//envia para a rota com os valores armazenados no config
-        .then (function($resposta) {
-            return resposta.json();
-        }).then(function(json){
-            console.log(json);
-        })
+            .then (function(resposta) {
+                return resposta.json();
+            }).then(function(json){
+                console.log(json);
+            }).catch(function(error){
+                console.log(error);
+            });
     }
 </script>
 
