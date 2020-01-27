@@ -38,20 +38,20 @@
 
         let config =   { 
             headers:{
-                "Content-Type":"application/json"
+                "Content-Type":"application/json"//que tipo de conteudo estou enviando pro servidor
             },
-            method :"POST",
+            method :"POST",//qual o método de envio
             body:JSON.stringify({nome:nomeProfissional, github:githubProfissional,tecnologia:tecProfissional}) 
-            //passando um valor(nomeProfissional) para o atributo(nome).
+            //passando um valor(nomeProfissional) para o atributo(nome). - qual o conteúdo
         }
         fetch('http://localhost:8000/api/profissionais', config)//envia para a rota com os valores armazenados no config
             .then (function(resposta) {
-                return resposta.json();
-            }).then(function(json){
-                console.log(json);
+                return resposta.json();//recebe a resposta completa
+            }).then(function(json){ 
+                console.log(json);  //trata a resposta recebida, pega o conteúdo da resposta
             }).catch(function(error){
-                console.log(error);
-            });
+                console.log(error); //caso de algum erro, ele exibe o erro
+            })
     }
 </script>
 
