@@ -10,7 +10,7 @@ class Profissional extends Model
     protected $table = 'profissionais';
 
     public function tecnologias(){
-        return $this->hasMany('App\tecnologias',  'profissionais_has_tecnologias', 
+        return $this->belongToMany('App\tecnologias',  'profissionais_has_tecnologias', 
         'profissional_id', 'tecnologia_id');
     }
 }

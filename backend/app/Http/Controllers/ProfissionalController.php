@@ -29,11 +29,6 @@ class ProfissionalController extends Controller
         }else{
             return response()->json(["error"=>"O id da tecnologia nao existe!"]);
         }
-     /*    
-        DB::table('profissionais_has_tecnologias')->insert([
-        ['tecnologia_id'=>$request, 'profissional_id'=>$request]
-        ]); */
-        
-        return response()->json($newProfissional);
+            return response()->json($newProfissional);
     }
 }
